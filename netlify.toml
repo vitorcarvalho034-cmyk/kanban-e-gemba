@@ -1,6 +1,7 @@
 [build]
   command = "pnpm build"
-  publish = "dist"
+  publish = "client/dist"
+
 
 [dev]
   command = "pnpm dev"
