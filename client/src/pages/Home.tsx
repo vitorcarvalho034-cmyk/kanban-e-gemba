@@ -690,19 +690,19 @@ export default function Home() {
                           )}
                         </div>
                         
-                        {/* Fields on right - only labels, blank spaces for writing */}
+                        {/* Fields on right - show data or blank spaces */}
                         <div className="kanban-fields-column">
                           <div className="kanban-field-row">
                             <div className="field-label"><strong>NOME DO PRODUTO:</strong></div>
-                            <div className="field-blank"></div>
+                            <div className="field-blank">{product.name && <span className="font-bold">{product.name}</span>}</div>
                           </div>
                           <div className="kanban-field-row">
                             <div className="field-label"><strong>FORNECEDOR:</strong></div>
-                            <div className="field-blank"></div>
+                            <div className="field-blank">{product.supplier && <span className="font-bold">{product.supplier}</span>}</div>
                           </div>
                           <div className="kanban-field-row">
                             <div className="field-label"><strong>ESTOQUE MÍNIMO:</strong></div>
-                            <div className="field-blank"></div>
+                            <div className="field-blank">{product.minStock && <span className="font-bold">{product.minStock}</span>}</div>
                           </div>
                         </div>
                       </div>
@@ -753,19 +753,19 @@ export default function Home() {
                           )}
                         </div>
                         
-                        {/* Fields on right - only labels, blank spaces for writing */}
+                        {/* Fields on right - show data or blank spaces */}
                         <div className="kanban-fields-column">
                           <div className="kanban-field-row">
                             <div className="field-label"><strong>NOME DO PRODUTO:</strong></div>
-                            <div className="field-blank"></div>
+                            <div className="field-blank">{product.name && <span className="font-bold">{product.name}</span>}</div>
                           </div>
                           <div className="kanban-field-row">
                             <div className="field-label"><strong>FORNECEDOR:</strong></div>
-                            <div className="field-blank"></div>
+                            <div className="field-blank">{product.supplier && <span className="font-bold">{product.supplier}</span>}</div>
                           </div>
                           <div className="kanban-field-row">
                             <div className="field-label"><strong>ESTOQUE MÍNIMO:</strong></div>
-                            <div className="field-blank"></div>
+                            <div className="field-blank">{product.minStock && <span className="font-bold">{product.minStock}</span>}</div>
                           </div>
                         </div>
                       </div>
