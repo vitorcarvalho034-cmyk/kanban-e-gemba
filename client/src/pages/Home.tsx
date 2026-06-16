@@ -108,6 +108,33 @@ export default function Home() {
     }
   };
 
+  const handleCameraCapture = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+      const video = document.createElement('video');
+      video.srcObject = stream;
+      video.play();
+      
+      const canvas = document.createElement('canvas');
+      canvas.width = 640;
+      canvas.height = 480;
+      
+      setTimeout(() => {
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+          const photoData = canvas.toDataURL('image/jpeg');
+          setFormData(prev => ({ ...prev, photo: photoData }));
+          
+          stream.getTracks().forEach(track => track.stop());
+          alert('Foto capturada com sucesso!');
+        }
+      }, 500);
+    } catch (error) {
+      alert('Erro ao acessar a câmera. Verifique as permissões.');
+    }
+  };
+
   const handleAddProduct = () => {
     if (!formData.name.trim()) {
       alert('Por favor, preencha o nome do produto');
@@ -508,12 +535,24 @@ export default function Home() {
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">Foto do Produto</label>
-                  <Input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleFileChange}
-                    disabled={!!editingId}
-                  />
+                  <div className="flex gap-2">
+                    <Input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleFileChange}
+                      disabled={!!editingId}
+                      className="flex-1"
+                    />
+                    <Button
+                      type="button"
+                      onClick={handleCameraCapture}
+                      variant="outline"
+                      disabled={!!editingId}
+                      className="gap-2"
+                    >
+                      📷 Câmera
+                    </Button>
+                  </div>
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">Estoque Mínimo</label>
