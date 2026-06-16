@@ -598,51 +598,45 @@ export default function Home() {
                 {products.map((product) => (
                   <div key={product.id} className="kanban-card-wrapper">
                     <div className="kanban-card">
-                      {/* KANBAN Section */}
+                      {/* KANBAN Header */}
                       <div className="kanban-header"><strong>KANBAN</strong></div>
-                      <div className="kanban-content">
-                        <div className="kanban-photo-section">
+                      
+                      {/* Main Content - Photo + Fields */}
+                      <div className="kanban-main-content">
+                        {/* Photo on left */}
+                        <div className="kanban-photo-small">
                           {product.photo ? (
                             <img src={product.photo} alt={product.name} />
                           ) : (
-                            <div className="flex items-center justify-center h-full text-gray-400">Sem foto</div>
+                            <div className="flex items-center justify-center h-full bg-gray-100 text-gray-400 text-xs">Sem foto</div>
                           )}
                         </div>
-                        <div className="kanban-fields">
-                          <div className="kanban-field">
+                        
+                        {/* Fields on right - only labels, blank spaces for writing */}
+                        <div className="kanban-fields-column">
+                          <div className="kanban-field-row">
                             <div className="field-label"><strong>NOME DO PRODUTO:</strong></div>
-                            <div className="field-value"><strong>{product.name}</strong></div>
+                            <div className="field-blank"></div>
                           </div>
-                          <div className="kanban-field">
+                          <div className="kanban-field-row">
+                            <div className="field-label"><strong>FORNECEDOR:</strong></div>
+                            <div className="field-blank"></div>
+                          </div>
+                          <div className="kanban-field-row">
+                            <div className="field-label"><strong>INSUMOS/CELEIRO:</strong></div>
+                            <div className="field-blank"></div>
+                          </div>
+                          <div className="kanban-field-row">
                             <div className="field-label"><strong>ESTOQUE MÍNIMO:</strong></div>
-                            <div className="field-value"><strong>{product.minStock}</strong></div>
-                          </div>
-                          <div className="kanban-field">
-                            <div className="field-label"><strong>CABEÇOTE:</strong></div>
-                            <div className="field-value"><strong>-</strong></div>
+                            <div className="field-blank"></div>
                           </div>
                         </div>
                       </div>
-
-                      {/* INFORMAÇÕES Section */}
-                      <div className="kanban-info-header"><strong>INFORMAÇÕES DO PRODUTO</strong></div>
-                      <div className="kanban-info-content">
-                        <div className="kanban-field">
-                          <div className="field-label"><strong>FORNECEDOR:</strong></div>
-                          <div className="field-value"><strong>{product.supplier}</strong></div>
-                        </div>
-                        <div className="kanban-field">
-                          <div className="field-label"><strong>INSUMOS HOLAMBRA / CELEIRO:</strong></div>
-                          <div className="field-value"><strong>-</strong></div>
-                        </div>
-                        <div className="kanban-field">
-                          <div className="field-label"><strong>DATA DA ÚLTIMA REPOSIÇÃO:</strong></div>
-                          <div className="field-value"><strong>{product.lastRestockDate || '-'}</strong></div>
-                        </div>
-                        <div className="kanban-field">
-                          <div className="field-label"><strong>ÉPOCA DO ANO UTILIZADO:</strong></div>
-                          <div className="field-value"><strong>{product.seasonUsed}</strong></div>
-                        </div>
+                      
+                      {/* INFORMAÇÕES Section - Large blank area at bottom */}
+                      <div className="kanban-info-section">
+                        <div className="kanban-info-header"><strong>INFORMAÇÕES</strong></div>
+                        <div className="kanban-info-blank"></div>
                       </div>
                     </div>
 
@@ -671,51 +665,45 @@ export default function Home() {
                 {products.map((product) => (
                   <div key={product.id} className="kanban-card-wrapper-single">
                     <div className="kanban-card">
-                      {/* KANBAN Section */}
+                      {/* KANBAN Header */}
                       <div className="kanban-header"><strong>KANBAN</strong></div>
-                      <div className="kanban-content">
-                        <div className="kanban-photo-section">
+                      
+                      {/* Main Content - Photo + Fields */}
+                      <div className="kanban-main-content">
+                        {/* Photo on left */}
+                        <div className="kanban-photo-small">
                           {product.photo ? (
                             <img src={product.photo} alt={product.name} />
                           ) : (
-                            <div className="flex items-center justify-center h-full text-gray-400">Sem foto</div>
+                            <div className="flex items-center justify-center h-full bg-gray-100 text-gray-400 text-xs">Sem foto</div>
                           )}
                         </div>
-                        <div className="kanban-fields">
-                          <div className="kanban-field">
+                        
+                        {/* Fields on right - only labels, blank spaces for writing */}
+                        <div className="kanban-fields-column">
+                          <div className="kanban-field-row">
                             <div className="field-label"><strong>NOME DO PRODUTO:</strong></div>
-                            <div className="field-value"><strong>{product.name}</strong></div>
+                            <div className="field-blank"></div>
                           </div>
-                          <div className="kanban-field">
+                          <div className="kanban-field-row">
+                            <div className="field-label"><strong>FORNECEDOR:</strong></div>
+                            <div className="field-blank"></div>
+                          </div>
+                          <div className="kanban-field-row">
+                            <div className="field-label"><strong>INSUMOS/CELEIRO:</strong></div>
+                            <div className="field-blank"></div>
+                          </div>
+                          <div className="kanban-field-row">
                             <div className="field-label"><strong>ESTOQUE MÍNIMO:</strong></div>
-                            <div className="field-value"><strong>{product.minStock}</strong></div>
-                          </div>
-                          <div className="kanban-field">
-                            <div className="field-label"><strong>CABEÇOTE:</strong></div>
-                            <div className="field-value"><strong>-</strong></div>
+                            <div className="field-blank"></div>
                           </div>
                         </div>
                       </div>
-
-                      {/* INFORMAÇÕES Section */}
-                      <div className="kanban-info-header"><strong>INFORMAÇÕES DO PRODUTO</strong></div>
-                      <div className="kanban-info-content">
-                        <div className="kanban-field">
-                          <div className="field-label"><strong>FORNECEDOR:</strong></div>
-                          <div className="field-value"><strong>{product.supplier}</strong></div>
-                        </div>
-                        <div className="kanban-field">
-                          <div className="field-label"><strong>INSUMOS HOLAMBRA / CELEIRO:</strong></div>
-                          <div className="field-value"><strong>-</strong></div>
-                        </div>
-                        <div className="kanban-field">
-                          <div className="field-label"><strong>DATA DA ÚLTIMA REPOSIÇÃO:</strong></div>
-                          <div className="field-value"><strong>{product.lastRestockDate || '-'}</strong></div>
-                        </div>
-                        <div className="kanban-field">
-                          <div className="field-label"><strong>ÉPOCA DO ANO UTILIZADO:</strong></div>
-                          <div className="field-value"><strong>{product.seasonUsed}</strong></div>
-                        </div>
+                      
+                      {/* INFORMAÇÕES Section - Large blank area at bottom */}
+                      <div className="kanban-info-section">
+                        <div className="kanban-info-header"><strong>INFORMAÇÕES</strong></div>
+                        <div className="kanban-info-blank"></div>
                       </div>
                     </div>
 
