@@ -343,6 +343,12 @@
   .field-blank {
     height: 18px;
     border-bottom: 1px solid #000;
+    display: flex;
+    align-items: center;
+    padding: 0 2px;
+    font-size: 11px;
+    font-weight: 400;
+    color: #000;
   }
 
   /* Info section */
