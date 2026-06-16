@@ -66,10 +66,24 @@ export default function Home() {
 
   // Load data from localStorage
   useEffect(() => {
-    const savedProducts = localStorage.getItem(STORAGE_KEY);
-    const savedProcesses = localStorage.getItem(GEMBA_STORAGE_KEY);
-    if (savedProducts) setProducts(JSON.parse(savedProducts));
-    if (savedProcesses) setProcesses(JSON.parse(savedProcesses));
+    try {
+      const savedProducts = localStorage.getItem(STORAGE_KEY);
+      const savedProcesses = localStorage.getItem(GEMBA_STORAGE_KEY);
+      console.log('Loaded products:', savedProducts);
+      console.log('Loaded processes:', savedProcesses);
+      if (savedProducts) {
+        const parsed = JSON.parse(savedProducts);
+        console.log('Parsed products:', parsed);
+        setProducts(parsed);
+      }
+      if (savedProcesses) {
+        const parsed = JSON.parse(savedProcesses);
+        console.log('Parsed processes:', parsed);
+        setProcesses(parsed);
+      }
+    } catch (e) {
+      console.error('Error loading from localStorage:', e);
+    }
   }, []);
 
   // Save products to localStorage (without auto-export)
@@ -687,10 +701,6 @@ export default function Home() {
                             <div className="field-blank"></div>
                           </div>
                           <div className="kanban-field-row">
-                            <div className="field-label"><strong>INSUMOS/CELEIRO:</strong></div>
-                            <div className="field-blank"></div>
-                          </div>
-                          <div className="kanban-field-row">
                             <div className="field-label"><strong>ESTOQUE MÍNIMO:</strong></div>
                             <div className="field-blank"></div>
                           </div>
@@ -751,10 +761,6 @@ export default function Home() {
                           </div>
                           <div className="kanban-field-row">
                             <div className="field-label"><strong>FORNECEDOR:</strong></div>
-                            <div className="field-blank"></div>
-                          </div>
-                          <div className="kanban-field-row">
-                            <div className="field-label"><strong>INSUMOS/CELEIRO:</strong></div>
                             <div className="field-blank"></div>
                           </div>
                           <div className="kanban-field-row">
