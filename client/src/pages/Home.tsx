@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -35,6 +35,9 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState('kanban');
   const [showBackupMenu, setShowBackupMenu] = useState(false);
   const [kanbanViewMode, setKanbanViewMode] = useState<'single' | 'dual'>('dual');
+  const [cameraOpen, setCameraOpen] = useState(false);
+  const [cameraStream, setCameraStream] = useState<MediaStream | null>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const { backupHistory, exportBackup, importBackup, restoreFromHistory, formatDate } = useBackup();
   
   // Kanban state
@@ -110,29 +113,51 @@ export default function Home() {
 
   const handleCameraCapture = async () => {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
-      const video = document.createElement('video');
-      video.srcObject = stream;
-      video.play();
+      const stream = await navigator.mediaDevices.getUserMedia({ 
+        video: { 
+          facingMode: 'environment',
+          width: { ideal: 1280 },
+          height: { ideal: 720 }
+        } 
+      });
       
-      const canvas = document.createElement('canvas');
-      canvas.width = 640;
-      canvas.height = 480;
+      setCameraStream(stream);
+      setCameraOpen(true);
       
       setTimeout(() => {
-        const ctx = canvas.getContext('2d');
-        if (ctx) {
-          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-          const photoData = canvas.toDataURL('image/jpeg');
-          setFormData(prev => ({ ...prev, photo: photoData }));
-          
-          stream.getTracks().forEach(track => track.stop());
-          alert('Foto capturada com sucesso!');
+        if (videoRef.current) {
+          videoRef.current.srcObject = stream;
         }
-      }, 500);
-    } catch (error) {
-      alert('Erro ao acessar a câmera. Verifique as permissões.');
+      }, 100);
+    } catch (error: any) {
+      console.error('Erro na câmera:', error);
+      alert(`Erro ao acessar a câmera: ${error?.message || 'Verifique as permissões'}`);
     }
+  };
+
+  const handleCapture = () => {
+    if (videoRef.current) {
+      const canvas = document.createElement('canvas');
+      canvas.width = videoRef.current.videoWidth || 640;
+      canvas.height = videoRef.current.videoHeight || 480;
+      
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
+        const photoData = canvas.toDataURL('image/jpeg', 0.8);
+        setFormData(prev => ({ ...prev, photo: photoData }));
+        handleCloseCamera();
+        alert('Foto capturada com sucesso!');
+      }
+    }
+  };
+
+  const handleCloseCamera = () => {
+    if (cameraStream) {
+      cameraStream.getTracks().forEach(track => track.stop());
+      setCameraStream(null);
+    }
+    setCameraOpen(false);
   };
 
   const handleAddProduct = () => {
@@ -898,6 +923,39 @@ export default function Home() {
                 ))}
               </div>
             )}
+          </div>
+        )}
+
+        {/* Camera Modal */}
+        {cameraOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+            <Card className="w-full max-w-md p-4">
+              <div className="mb-4">
+                <h2 className="text-lg font-bold mb-2">Capturar Foto</h2>
+                <video
+                  ref={videoRef}
+                  autoPlay
+                  playsInline
+                  muted
+                  className="w-full h-64 bg-black rounded-lg object-cover"
+                />
+              </div>
+              <div className="flex gap-2">
+                <Button
+                  onClick={handleCapture}
+                  className="flex-1 gap-2"
+                >
+                  📷 Capturar
+                </Button>
+                <Button
+                  onClick={handleCloseCamera}
+                  variant="outline"
+                  className="flex-1"
+                >
+                  Cancelar
+                </Button>
+              </div>
+            </Card>
           </div>
         )}
       </div>
