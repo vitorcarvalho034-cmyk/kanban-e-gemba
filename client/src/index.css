@@ -291,12 +291,14 @@
   .kanban-card-wrapper {
     display: flex;
     flex-direction: column;
+    height: 566px;
   }
 
   /* KANBAN CARD WRAPPER - SINGLE MODE (1 card per page) */
   .kanban-card-wrapper-single {
     display: flex;
     flex-direction: column;
+    height: 1132px;
   }
 
   /* NEW LAYOUT - Main content with photo + fields */
