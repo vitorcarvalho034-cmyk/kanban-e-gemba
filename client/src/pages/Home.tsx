@@ -676,39 +676,45 @@ export default function Home() {
                 {products.map((product) => (
                   <div key={product.id} className="kanban-card-wrapper">
                     <div className="kanban-card">
-                      {/* KANBAN Header */}
-                      <div className="kanban-header"><strong>KANBAN</strong></div>
-                      
-                      {/* Main Content - Photo + Fields */}
-                      <div className="kanban-main-content">
-                        {/* Photo on left */}
-                        <div className="kanban-photo-small">
-                          {product.photo ? (
-                            <img src={product.photo} alt={product.name} />
-                          ) : (
-                            <div className="flex items-center justify-center h-full bg-gray-100 text-gray-400 text-xs">Sem foto</div>
-                          )}
-                        </div>
+                      {/* TOP HALF - Visible when folded */}
+                      <div className="kanban-top-half">
+                        {/* KANBAN Header */}
+                        <div className="kanban-header"><strong>KANBAN</strong></div>
                         
-                        {/* Fields on right - show data or blank spaces */}
-                        <div className="kanban-fields-column">
-                          <div className="kanban-field-row">
-                            <div className="field-label"><strong>NOME DO PRODUTO:</strong></div>
-                            <div className="field-blank">{product.name && <span>{product.name}</span>}</div>
+                        {/* Main Content - Photo + Fields */}
+                        <div className="kanban-main-content">
+                          {/* Photo on left */}
+                          <div className="kanban-photo-small">
+                            {product.photo ? (
+                              <img src={product.photo} alt={product.name} />
+                            ) : (
+                              <div className="flex items-center justify-center h-full bg-gray-100 text-gray-400 text-xs">Sem foto</div>
+                            )}
                           </div>
-                          <div className="kanban-field-row">
-                            <div className="field-label"><strong>FORNECEDOR:</strong></div>
-                            <div className="field-blank">{product.supplier && <span>{product.supplier}</span>}</div>
-                          </div>
-                          <div className="kanban-field-row">
-                            <div className="field-label"><strong>ESTOQUE MÍNIMO:</strong></div>
-                            <div className="field-blank">{product.minStock && <span>{product.minStock}</span>}</div>
+                          
+                          {/* Fields on right - show data or blank spaces */}
+                          <div className="kanban-fields-column">
+                            <div className="kanban-field-row">
+                              <div className="field-label"><strong>NOME DO PRODUTO:</strong></div>
+                              <div className="field-blank">{product.name && <span>{product.name}</span>}</div>
+                            </div>
+                            <div className="kanban-field-row">
+                              <div className="field-label"><strong>FORNECEDOR:</strong></div>
+                              <div className="field-blank">{product.supplier && <span>{product.supplier}</span>}</div>
+                            </div>
+                            <div className="kanban-field-row">
+                              <div className="field-label"><strong>ESTOQUE MÍNIMO:</strong></div>
+                              <div className="field-blank">{product.minStock && <span>{product.minStock}</span>}</div>
+                            </div>
                           </div>
                         </div>
                       </div>
                       
-                      {/* INFORMAÇÕES Section - Large blank area at bottom */}
-                      <div className="kanban-info-section">
+                      {/* FOLD LINE */}
+                      <div className="kanban-fold-line"></div>
+                      
+                      {/* BOTTOM HALF - Hidden when folded */}
+                      <div className="kanban-bottom-half">
                         <div className="kanban-info-header"><strong>INFORMAÇÕES</strong></div>
                         <div className="kanban-info-blank"></div>
                       </div>
@@ -739,39 +745,45 @@ export default function Home() {
                 {products.map((product) => (
                   <div key={product.id} className="kanban-card-wrapper-single">
                     <div className="kanban-card">
-                      {/* KANBAN Header */}
-                      <div className="kanban-header"><strong>KANBAN</strong></div>
-                      
-                      {/* Main Content - Photo + Fields */}
-                      <div className="kanban-main-content">
-                        {/* Photo on left */}
-                        <div className="kanban-photo-small">
-                          {product.photo ? (
-                            <img src={product.photo} alt={product.name} />
-                          ) : (
-                            <div className="flex items-center justify-center h-full bg-gray-100 text-gray-400 text-xs">Sem foto</div>
-                          )}
-                        </div>
+                      {/* TOP HALF - Visible when folded */}
+                      <div className="kanban-top-half">
+                        {/* KANBAN Header */}
+                        <div className="kanban-header"><strong>KANBAN</strong></div>
                         
-                        {/* Fields on right - show data or blank spaces */}
-                        <div className="kanban-fields-column">
-                          <div className="kanban-field-row">
-                            <div className="field-label"><strong>NOME DO PRODUTO:</strong></div>
-                            <div className="field-blank">{product.name && <span>{product.name}</span>}</div>
+                        {/* Main Content - Photo + Fields */}
+                        <div className="kanban-main-content">
+                          {/* Photo on left */}
+                          <div className="kanban-photo-small">
+                            {product.photo ? (
+                              <img src={product.photo} alt={product.name} />
+                            ) : (
+                              <div className="flex items-center justify-center h-full bg-gray-100 text-gray-400 text-xs">Sem foto</div>
+                            )}
                           </div>
-                          <div className="kanban-field-row">
-                            <div className="field-label"><strong>FORNECEDOR:</strong></div>
-                            <div className="field-blank">{product.supplier && <span>{product.supplier}</span>}</div>
-                          </div>
-                          <div className="kanban-field-row">
-                            <div className="field-label"><strong>ESTOQUE MÍNIMO:</strong></div>
-                            <div className="field-blank">{product.minStock && <span>{product.minStock}</span>}</div>
+                          
+                          {/* Fields on right - show data or blank spaces */}
+                          <div className="kanban-fields-column">
+                            <div className="kanban-field-row">
+                              <div className="field-label"><strong>NOME DO PRODUTO:</strong></div>
+                              <div className="field-blank">{product.name && <span>{product.name}</span>}</div>
+                            </div>
+                            <div className="kanban-field-row">
+                              <div className="field-label"><strong>FORNECEDOR:</strong></div>
+                              <div className="field-blank">{product.supplier && <span>{product.supplier}</span>}</div>
+                            </div>
+                            <div className="kanban-field-row">
+                              <div className="field-label"><strong>ESTOQUE MÍNIMO:</strong></div>
+                              <div className="field-blank">{product.minStock && <span>{product.minStock}</span>}</div>
+                            </div>
                           </div>
                         </div>
                       </div>
                       
-                      {/* INFORMAÇÕES Section - Large blank area at bottom */}
-                      <div className="kanban-info-section">
+                      {/* FOLD LINE */}
+                      <div className="kanban-fold-line"></div>
+                      
+                      {/* BOTTOM HALF - Hidden when folded */}
+                      <div className="kanban-bottom-half">
                         <div className="kanban-info-header"><strong>INFORMAÇÕES</strong></div>
                         <div className="kanban-info-blank"></div>
                       </div>

@@ -354,6 +354,29 @@
     color: #000;
   }
 
+  /* TOP HALF - Visible when folded */
+  .kanban-top-half {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 50%;
+    border-bottom: 2px dashed #999;
+  }
+
+  /* FOLD LINE */
+  .kanban-fold-line {
+    height: 2px;
+    background: dashed #999;
+    flex: 0 0 auto;
+  }
+
+  /* BOTTOM HALF - Hidden when folded */
+  .kanban-bottom-half {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 50%;
+    border-bottom: 1px solid #000;
+  }
+
   /* Info section */
   .kanban-info-section {
     display: flex;
@@ -363,7 +386,7 @@
   }
 
   .kanban-info-blank {
-    flex: 1 1 50%;
+    flex: 1;
     min-height: auto;
   }
 
@@ -420,21 +443,24 @@
       flex: 0 0 auto;
     }
 
-    .kanban-content {
+    .kanban-main-content {
       flex: 1 1 50% !important;
       min-height: 0 !important;
     }
 
-    .kanban-divider {
-      flex: 0 0 auto;
+    .kanban-info-section {
+      flex: 1 1 50% !important;
+      min-height: 0 !important;
+      display: flex;
+      flex-direction: column;
     }
 
     .kanban-info-header {
       flex: 0 0 auto;
     }
 
-    .kanban-info-content {
-      flex: 1 1 50% !important;
+    .kanban-info-blank {
+      flex: 1 !important;
       min-height: 0 !important;
     }
 
