@@ -304,7 +304,7 @@
   /* NEW LAYOUT - Main content with photo + fields */
   .kanban-main-content {
     display: grid;
-    grid-template-columns: 100px 1fr;
+    grid-template-columns: 140px 1fr;
     gap: 8px;
     padding: 8px;
     border-bottom: 1px solid #000;
@@ -312,8 +312,8 @@
   }
 
   .kanban-photo-small {
-    width: 100px;
-    height: 100px;
+    width: 140px;
+    height: 140px;
     border: 1px solid #000;
     overflow: hidden;
     background: #f5f5f5;
@@ -344,12 +344,12 @@
   }
 
   .field-blank {
-    height: 18px;
+    height: 24px;
     border-bottom: 1px solid #000;
     display: flex;
     align-items: center;
     padding: 0 2px;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 400;
     color: #000;
   }
